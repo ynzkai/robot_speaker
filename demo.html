@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Robot Speaker Demo</title>
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.robot_speaker.js"></script>
+
+	<script type="text/javascript">
+		
+		/*
+		var msg = "hello, world!";
+		var chs = msg.split('');
+
+		$container = $(".robot-speaker");
+		function putc() {
+			if(0 < chs.length) {
+				$container.html($container.html() + chs.shift());
+				setTimeout("putc();", 500);
+			}
+		}
+		*/
+
+
+	  $(document).ready(function() {
+		  $container = $(".robot-speaker");
+		  $container.init_robot({
+			  container: $container,
+			  interval: 300,
+			  pausekey: '`',
+			  deletekey: '/'
+		  });
+		  $container.mouseenter(function() {
+			  $(this).speak("hello,` world!/你好！我\n是zk/EOF");
+		  });
+		  $container.mouseleave(function() {
+			  $(this).nospeak().html('');
+		  });
+	  });
+	</script>
+
+	<link rel="stylesheet" href="css/animate.css">
+
+	<style type="text/css">
+	  .robot-speaker {
+		  width: 200px;
+		  height: 50px;
+		  background-color: #333;
+		  color: #eee;
+		  margin: 100px;
+		  font-size: 1.3em;
+		  text-align: center;
+		  font-family: Arial;
+	  }
+	</style>
+</head>
+<body>
+<div class="container">
+  <pre class="robot-speaker"></pre>
+</div>
+</body>
+</html>
+
