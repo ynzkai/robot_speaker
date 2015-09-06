@@ -13,10 +13,13 @@
 
 2. 在HTML文件里准备一个容器
 
+   ```
     <div class="robot-speaker"></div>
+   ```
 
 3. 编写执行脚本,参考以下代码
 
+   ```
     <script type="text/javascript">
         $(document).ready(function() {
             $container = $(".robot-speaker");
@@ -38,4 +41,5 @@
             });
         });
     </script>
+   ```
 
