@@ -12,6 +12,7 @@
 	var interval = 500;
 	var pausekey;
 	var deletekey;
+	var loop = true;
 
 	var state;
 
@@ -21,26 +22,34 @@
 			interval = options["interval"];
 			pausekey = options["pausekey"];
 			deletekey = options["deletekey"];
+			loop = options["loop"];
 		},
 		speak: function(msg) {
 			state = true;
 			var chs = msg.split('');
+			var i = 0;
 
 			//为了setTimeout正常工作，putc定义为全局函数。
 			window.putc = function() {
-				if(state && 0 < chs.length) {
-					if(chs[0] == pausekey) {
-						chs.shift();
+				if(!state) return;
+				if(i < chs.length) {
+					if(i == 0) container.html('');
+					if(chs[i] == pausekey) {
+						//chs.shift();
+						i++;
 						setTimeout("putc();", interval*2);
-					} else if(chs[0] == deletekey) {
-						chs.shift();
+					} else if(chs[i] == deletekey) {
+						i++;
 						container.html('');
 						setTimeout("putc();", 0);
 					} else {
-						container.html(container.html() + chs.shift());
+						container.html(container.html() + chs[i++]);
 						setTimeout("putc();", interval);
 					}
 
+				} else {
+					i = 0;
+					setTimeout("putc();", interval*3);
 				}
 			}
 

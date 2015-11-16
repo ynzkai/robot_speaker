@@ -29,7 +29,8 @@
           	  container: $container, //设置容器
           	  interval: 300,		 //字符显示时间间隔
           	  pausekey: '`',		 //设置停顿字符
-          	  deletekey: '@'		 //设置清除字符
+          	  deletekey: '@',		 //设置清除字符
+			  loop: true
             });
 
             $container.mouseenter(function() {
