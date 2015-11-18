@@ -12,6 +12,7 @@
 	var interval = 500;
 	var pausekey;
 	var deletekey;
+	var newline;
 	var loop = true;
 
 	var state;
@@ -22,6 +23,7 @@
 			interval = options["interval"];
 			pausekey = options["pausekey"];
 			deletekey = options["deletekey"];
+			newline = options["newline"];
 			loop = options["loop"];
 		},
 		speak: function(msg) {
@@ -41,6 +43,10 @@
 					} else if(chs[i] == deletekey) {
 						i++;
 						container.html('');
+						setTimeout("putc();", 0);
+					} else if(chs[i] == deletekey) {
+						i++;
+						container.html(container.html() + "\n");
 						setTimeout("putc();", 0);
 					} else {
 						container.html(container.html() + chs[i++]);
