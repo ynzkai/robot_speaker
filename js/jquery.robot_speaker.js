@@ -53,7 +53,7 @@
 						setTimeout("putc();", interval);
 					}
 
-				} else {
+				} else if(loop) {
 					i = 0;
 					setTimeout("putc();", interval*3);
 				}
